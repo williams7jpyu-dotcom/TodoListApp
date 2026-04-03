@@ -1,0 +1,356 @@
+/*
+ * ToDo リスト アプリケーション - 共通スタイルシート
+ *
+ * アプリケーション全体のデザインを定義するCSSファイルです。
+ * 手順書ステップ6「HTML/CSS、JavaScriptで画面を作成する」に対応しています。
+ */
+
+/* ===== リセットと基本設定 ===== */
+/* ブラウザのデフォルトスタイルをリセットして統一的な表示にする */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', 'Hiragino Sans', 'Meiryo', sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* ===== コンテナ ===== */
+/* 画面中央にコンテンツを配置するラッパー */
+.container {
+    max-width: 700px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+/* ===== ヘッダー ===== */
+.header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.header h1 {
+    font-size: 1.8rem;
+    color: #2c3e50;
+    font-weight: 700;
+}
+
+/* ===== ボタン共通 ===== */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+/* プライマリボタン（メイン操作用） */
+.btn-primary {
+    background-color: #3498db;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+}
+
+/* セカンダリボタン（キャンセル・戻る用） */
+.btn-secondary {
+    background-color: #95a5a6;
+    color: #fff;
+}
+
+.btn-secondary:hover {
+    background-color: #7f8c8d;
+}
+
+/* 危険ボタン（削除用） */
+.btn-danger {
+    background-color: #e74c3c;
+    color: #fff;
+}
+
+.btn-danger:hover {
+    background-color: #c0392b;
+}
+
+/* ===== アクションエリア（新規追加ボタン配置） ===== */
+.actions {
+    text-align: right;
+    margin-bottom: 16px;
+}
+
+/* ===== ToDoリスト ===== */
+.todo-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    padding: 14px 16px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.2s;
+}
+
+.todo-item:hover {
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+}
+
+/* 完了済みToDoのスタイル */
+.todo-item.completed {
+    opacity: 0.6;
+}
+
+/* ===== チェックボックス風ボタン ===== */
+.toggle-form {
+    flex-shrink: 0;
+}
+
+.checkbox-btn {
+    width: 28px;
+    height: 28px;
+    border: 2px solid #bdc3c7;
+    border-radius: 6px;
+    background: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    color: #fff;
+}
+
+.checkbox-btn:hover {
+    border-color: #3498db;
+}
+
+.checkbox-btn.checked {
+    background-color: #27ae60;
+    border-color: #27ae60;
+    color: #fff;
+}
+
+/* ===== ToDoリンク ===== */
+.todo-link {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 14px;
+    text-decoration: none;
+    color: #333;
+    padding: 4px 0;
+}
+
+.todo-link:hover .todo-task {
+    color: #3498db;
+}
+
+.todo-task {
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+/* 完了済みのタスク名に取り消し線（アクティビティ図の要件） */
+.completed .todo-task,
+.completed-text {
+    text-decoration: line-through;
+    color: #999;
+}
+
+.todo-date {
+    font-size: 0.85rem;
+    color: #7f8c8d;
+    white-space: nowrap;
+    margin-left: 12px;
+}
+
+/* ===== 空メッセージ ===== */
+.empty-message {
+    text-align: center;
+    padding: 60px 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    color: #7f8c8d;
+}
+
+.empty-message p:first-child {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+
+/* ===== 詳細画面 ===== */
+.detail-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    padding: 24px;
+    margin-bottom: 20px;
+}
+
+.detail-row {
+    display: flex;
+    padding: 12px 0;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.detail-row:last-child {
+    border-bottom: none;
+}
+
+.detail-label {
+    width: 80px;
+    font-weight: 600;
+    color: #7f8c8d;
+    flex-shrink: 0;
+}
+
+.detail-value {
+    flex: 1;
+    color: #2c3e50;
+}
+
+/* 状態バッジ */
+.status-badge {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.status-done {
+    background-color: #d5f4e6;
+    color: #27ae60;
+}
+
+.status-todo {
+    background-color: #fdebd0;
+    color: #e67e22;
+}
+
+/* 詳細画面のボタン群 */
+.detail-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.inline-form {
+    display: inline;
+}
+
+/* ===== フォーム画面 ===== */
+.todo-form {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    padding: 24px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 6px;
+}
+
+.required {
+    color: #e74c3c;
+    font-size: 0.8rem;
+    font-weight: normal;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px 14px;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.2s;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 24px;
+}
+
+/* ===== レスポンシブ対応 ===== */
+/* スマートフォンなど小さい画面でも見やすくする */
+@media (max-width: 600px) {
+    .container {
+        margin: 16px auto;
+    }
+
+    .header h1 {
+        font-size: 1.4rem;
+    }
+
+    .todo-link {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .todo-date {
+        margin-left: 0;
+        margin-top: 4px;
+    }
+
+    .detail-row {
+        flex-direction: column;
+    }
+
+    .detail-label {
+        margin-bottom: 4px;
+    }
+
+    .detail-actions {
+        flex-direction: column;
+    }
+
+    .detail-actions .btn {
+        width: 100%;
+        text-align: center;
+    }
+}
